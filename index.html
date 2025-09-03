@@ -12,10 +12,10 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            background: #000000;
             overflow-x: hidden;
         }
 
@@ -32,70 +32,58 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
             position: relative;
+            background: radial-gradient(ellipse at center, #1a1a1a 0%, #000000 70%);
         }
 
         .hero-content {
             z-index: 2;
-            animation: fadeInUp 1s ease-out;
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+            animation: heroAppear 2s ease-out forwards;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
+            font-weight: 700;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, #fff, #a8edea);
+            background: linear-gradient(135deg, #ffffff, #00d4ff, #ff0080);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: pulse 2s infinite;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
         }
 
         .hero .subtitle {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
+            opacity: 0.8;
+            font-weight: 300;
         }
 
         .hero .description {
             font-size: 1.2rem;
             max-width: 600px;
-            margin: 0 auto 2rem;
-            opacity: 0.8;
+            margin: 0 auto 3rem;
+            opacity: 0.6;
+            line-height: 1.8;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 15px 30px;
-            background: rgba(255, 255, 255, 0.2);
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #00d4ff, #ff0080);
             color: white;
             text-decoration: none;
             border-radius: 50px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            font-weight: 600;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
         }
 
         .cta-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Floating particles background */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.4);
         }
 
         /* Navigation */
@@ -103,333 +91,577 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(20px);
             z-index: 1000;
             transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         nav.scrolled {
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
         }
 
         nav ul {
             display: flex;
             justify-content: center;
             list-style: none;
-            padding: 1rem 0;
+            padding: 1.5rem 0;
         }
 
         nav li {
-            margin: 0 1rem;
+            margin: 0 2rem;
         }
 
         nav a {
-            color: white;
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             font-weight: 500;
+            position: relative;
         }
 
         nav a:hover {
-            color: #a8edea;
+            color: #00d4ff;
         }
 
-        /* Sections */
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00d4ff, #ff0080);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Apple-style sections */
         .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
             padding: 100px 0;
-            background: white;
+            position: relative;
         }
 
-        .section:nth-child(even) {
-            background: #f8f9fa;
+        .section-content {
+            opacity: 0;
+            transform: translateZ(-100px) translateY(50px);
+            transition: all 1s ease-out;
+            will-change: transform, opacity;
+        }
+
+        .section-content.visible {
+            opacity: 1;
+            transform: translateZ(0) translateY(0);
         }
 
         .section-title {
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 3rem;
-            color: #333;
-            position: relative;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #ffffff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 2px;
-        }
-
-        /* Journey Section */
+        /* Timeline with Apple-style animations */
         .journey-timeline {
             position: relative;
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         .timeline-item {
             display: flex;
-            margin: 3rem 0;
+            margin: 5rem 0;
             opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.6s ease;
+            transform: translateX(-100px) rotateY(-15deg);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            perspective: 1000px;
         }
 
         .timeline-item.visible {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateX(0) rotateY(0deg);
         }
 
         .timeline-item:nth-child(even) {
             flex-direction: row-reverse;
-            transform: translateX(50px);
-        }
-
-        .timeline-item.visible:nth-child(even) {
-            transform: translateX(0);
+            transform: translateX(100px) rotateY(15deg);
         }
 
         .timeline-content {
             flex: 1;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border-radius: 20px;
             margin: 0 2rem;
             position: relative;
-        }
-
-        .timeline-content::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 0;
-            height: 0;
-            border: 15px solid transparent;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content::before {
-            right: -30px;
-            border-left-color: white;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content::before {
-            left: -30px;
-            border-right-color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .timeline-year {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 1rem;
         }
 
         .timeline-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            color: #333;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
         }
 
         .timeline-description {
-            color: #666;
-            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            font-size: 1.1rem;
         }
 
-        /* Projects Grid */
+        /* Interactive Project Cards */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
         }
 
         .project-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border-radius: 25px;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(100px) scale(0.8);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-height: 500px;
         }
 
         .project-card.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 212, 255, 0.2);
+        }
+
+        /* Interactive Medical Segmentation Animation */
+        .project-animation {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 25px 25px 0 0;
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+        }
+
+        .brain-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+        }
+
+        .brain-outline {
+            width: 100%;
+            height: 100%;
+            border: 3px solid #00d4ff;
+            border-radius: 60% 40% 40% 60% / 60% 60% 40% 40%;
+            position: relative;
+            animation: brainPulse 3s ease-in-out infinite;
+        }
+
+        .brain-tissue {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 80%;
+            height: 80%;
+            background: linear-gradient(45deg, rgba(0, 212, 255, 0.3), rgba(255, 0, 128, 0.3));
+            border-radius: 50% 40% 40% 50% / 50% 50% 40% 40%;
+            animation: tissueExtraction 4s ease-in-out infinite;
+        }
+
+        .non-brain-tissue {
+            position: absolute;
+            top: -5%;
+            left: -5%;
+            width: 110%;
+            height: 110%;
+            background: linear-gradient(45deg, rgba(255, 100, 100, 0.2), rgba(255, 200, 100, 0.2));
+            border-radius: 55% 45% 45% 55% / 55% 55% 45% 45%;
+            animation: nonBrainRemoval 4s ease-in-out infinite;
+        }
+
+        .segmentation-tool {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            background: #ff0080;
+            border-radius: 50%;
+            animation: toolMovement 4s linear infinite;
+        }
+
+        /* Video Dubbing Animation */
+        .dubbing-animation {
+            height: 250px;
+            position: relative;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            border-radius: 25px 25px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            overflow: hidden;
+        }
+
+        .audio-wave {
+            width: 60px;
+            height: 100px;
+            display: flex;
+            align-items: end;
+            gap: 3px;
+        }
+
+        .wave-bar {
+            width: 4px;
+            background: linear-gradient(to top, #00d4ff, #ff0080);
+            border-radius: 2px;
+            animation: audioWave 1s ease-in-out infinite;
+        }
+
+        .wave-bar:nth-child(2) { animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { animation-delay: 0.4s; }
+
+        .translation-arrow {
+            font-size: 2rem;
+            color: #00d4ff;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .lip-sync {
+            width: 80px;
+            height: 80px;
+            border: 3px solid #ff0080;
+            border-radius: 50%;
+            position: relative;
+            animation: lipMovement 2s ease-in-out infinite;
+        }
+
+        .lip-sync::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 20px;
+            background: #ff0080;
+            border-radius: 50%;
+            animation: mouthOpen 2s ease-in-out infinite;
+        }
+
+        /* IoT Animation */
+        .iot-animation {
+            height: 250px;
+            position: relative;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            border-radius: 25px 25px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .iot-network {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .iot-node {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #00d4ff;
+            border-radius: 50%;
+            animation: nodeGlow 2s ease-in-out infinite;
+        }
+
+        .iot-node:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
+        .iot-node:nth-child(2) { top: 50%; left: 0; transform: translateY(-50%); }
+        .iot-node:nth-child(3) { top: 50%; right: 0; transform: translateY(-50%); }
+        .iot-node:nth-child(4) { bottom: 0; left: 50%; transform: translateX(-50%); }
+        .iot-node:nth-child(5) { top: 50%; left: 50%; transform: translate(-50%, -50%); background: #ff0080; }
+
+        .iot-connection {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+            height: 2px;
+            animation: dataFlow 3s linear infinite;
+        }
+
+        .project-content {
+            padding: 2.5rem;
         }
 
         .project-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            color: #333;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
         }
 
         .project-description {
-            color: #666;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            line-height: 1.7;
         }
 
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.8rem;
         }
 
         .tech-tag {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(255, 0, 128, 0.2));
+            color: #ffffff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
 
-        /* Skills Section */
+        /* Skills with better animations */
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
         }
 
         .skill-category {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            padding: 3rem;
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .skill-category h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: #333;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            text-align: center;
         }
 
         .skill-item {
-            margin: 1rem 0;
+            margin: 2rem 0;
         }
 
         .skill-name {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
         }
 
         .skill-bar {
             width: 100%;
-            height: 8px;
-            background: #e0e0e0;
-            border-radius: 4px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
             overflow: hidden;
+            position: relative;
         }
 
         .skill-progress {
             height: 100%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 4px;
+            background: linear-gradient(90deg, #00d4ff, #ff0080);
+            border-radius: 5px;
             width: 0;
-            transition: width 1s ease-in-out;
+            transition: width 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Contact Section */
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: skillShine 2s ease-in-out infinite;
+        }
+
+        /* Contact with better styling */
         .contact-info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 4rem;
         }
 
         .contact-item {
             text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
         }
 
         .contact-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
         }
 
         .contact-icon {
-            font-size: 2rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item h3 {
+            font-size: 1.4rem;
             margin-bottom: 1rem;
-            color: #667eea;
+            color: #ffffff;
+        }
+
+        .contact-item p {
+            color: rgba(255, 255, 255, 0.7);
         }
 
         /* Footer */
         footer {
-            background: #333;
-            color: white;
+            background: rgba(0, 0, 0, 0.8);
+            color: rgba(255, 255, 255, 0.6);
             text-align: center;
-            padding: 2rem 0;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* Animations */
-        @keyframes fadeInUp {
-            from {
+        @keyframes heroAppear {
+            0% {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(50px) scale(0.9);
             }
-            to {
+            100% {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
+        }
+
+        @keyframes glow {
+            0% { filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.5)); }
+            100% { filter: drop-shadow(0 0 20px rgba(255, 0, 128, 0.5)); }
+        }
+
+        @keyframes brainPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes tissueExtraction {
+            0% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(0.95); }
+            100% { opacity: 0.8; transform: scale(1); }
+        }
+
+        @keyframes nonBrainRemoval {
+            0% { opacity: 0.6; transform: scale(1); }
+            25% { opacity: 0.4; transform: scale(0.98); }
+            50% { opacity: 0.3; transform: scale(0.95); }
+            75% { opacity: 0.4; transform: scale(0.98); }
+            100% { opacity: 0.6; transform: scale(1); }
+        }
+
+        @keyframes toolMovement {
+            0% { top: 10%; left: 10%; }
+            25% { top: 10%; left: 80%; }
+            50% { top: 80%; left: 80%; }
+            75% { top: 80%; left: 10%; }
+            100% { top: 10%; left: 10%; }
+        }
+
+        @keyframes audioWave {
+            0%, 100% { height: 20px; }
+            50% { height: 80px; }
         }
 
         @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
         }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-            33% {
-                transform: translateY(-10px) rotate(120deg);
-            }
-            66% {
-                transform: translateY(10px) rotate(240deg);
-            }
+        @keyframes lipMovement {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes mouthOpen {
+            0%, 100% { height: 10px; }
+            50% { height: 30px; }
+        }
+
+        @keyframes nodeGlow {
+            0%, 100% { box-shadow: 0 0 10px rgba(0, 212, 255, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(0, 212, 255, 1); }
+        }
+
+        @keyframes dataFlow {
+            0% { width: 0; left: 0; }
+            50% { width: 100%; left: 0; }
+            100% { width: 0; left: 100%; }
+        }
+
+        @keyframes skillShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero .subtitle {
-                font-size: 1.2rem;
+                font-size: 3rem;
             }
             
             .section-title {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
             .timeline-item {
                 flex-direction: column !important;
+                transform: translateY(50px) !important;
+            }
+            
+            .timeline-item.visible {
+                transform: translateY(0) !important;
             }
             
             .timeline-content {
@@ -437,12 +669,17 @@
             }
             
             nav ul {
-                flex-direction: column;
-                padding: 0.5rem 0;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 1rem 0;
             }
             
             nav li {
-                margin: 0.25rem 0;
+                margin: 0.5rem 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -459,7 +696,6 @@
     </nav>
 
     <section id="home" class="hero">
-        <div class="particles"></div>
         <div class="hero-content">
             <h1>AKHIL</h1>
             <p class="subtitle">From Mechanical Engineering to AI/ML Excellence</p>
@@ -473,60 +709,62 @@
 
     <section id="journey" class="section">
         <div class="container">
-            <h2 class="section-title">My Journey</h2>
-            <div class="journey-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2014-2015</div>
-                        <h3 class="timeline-title">High School Excellence</h3>
-                        <p class="timeline-description">
-                            Graduated from N.S. D.A.V Public School, Ranchi with 83.6%, laying the foundation for my academic journey 
-                            and developing a strong interest in mathematics and science.
-                        </p>
+            <div class="section-content">
+                <h2 class="section-title">My Journey</h2>
+                <div class="journey-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2014-2015</div>
+                            <h3 class="timeline-title">High School Excellence</h3>
+                            <p class="timeline-description">
+                                Graduated from N.S. D.A.V Public School, Ranchi with 83.6%, laying the foundation for my academic journey 
+                                and developing a strong interest in mathematics and science.
+                            </p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2016-2017</div>
-                        <h3 class="timeline-title">Senior Secondary Achievement</h3>
-                        <p class="timeline-description">
-                            Completed senior secondary education at Delhi Model Public School, Patna with 76.4%, 
-                            choosing the science stream and preparing for engineering entrance exams.
-                        </p>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2016-2017</div>
+                            <h3 class="timeline-title">Senior Secondary Achievement</h3>
+                            <p class="timeline-description">
+                                Completed senior secondary education at Delhi Model Public School, Patna with 76.4%, 
+                                choosing the science stream and preparing for engineering entrance exams.
+                            </p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2018-2022</div>
-                        <h3 class="timeline-title">B.Tech in Mechanical Engineering</h3>
-                        <p class="timeline-description">
-                            Graduated from Bhilai Institute of Technology, Durg with 79.61%. During this period, I discovered my passion 
-                            for technology and programming, working on IoT projects and published research in object detection and sensing.
-                        </p>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2018-2022</div>
+                            <h3 class="timeline-title">B.Tech in Mechanical Engineering</h3>
+                            <p class="timeline-description">
+                                Graduated from Bhilai Institute of Technology, Durg with 79.61%. During this period, I discovered my passion 
+                                for technology and programming, working on IoT projects and published research in object detection and sensing.
+                            </p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2023</div>
-                        <h3 class="timeline-title">GATE CSE Qualification</h3>
-                        <p class="timeline-description">
-                            Successfully qualified GATE in Computer Science and Engineering with AIR 1517, marking my transition 
-                            from mechanical to computer science and opening doors to premier institutions.
-                        </p>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2023</div>
+                            <h3 class="timeline-title">GATE CSE Qualification</h3>
+                            <p class="timeline-description">
+                                Successfully qualified GATE in Computer Science and Engineering with AIR 1517, marking my transition 
+                                from mechanical to computer science and opening doors to premier institutions.
+                            </p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2023-2026</div>
-                        <h3 class="timeline-title">M.Tech (Research) at IISc Bangalore</h3>
-                        <p class="timeline-description">
-                            Currently pursuing M.Tech in Computational and Data Science at the prestigious Indian Institute of Science, 
-                            Bangalore. Working on advanced ML frameworks for high-precision medical image segmentation.
-                        </p>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2023-2026</div>
+                            <h3 class="timeline-title">M.Tech (Research) at IISc Bangalore</h3>
+                            <p class="timeline-description">
+                                Currently pursuing M.Tech in Computational and Data Science at the prestigious Indian Institute of Science, 
+                                Bangalore. Working on advanced ML frameworks for high-precision medical image segmentation.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -535,92 +773,188 @@
 
     <section id="projects" class="section">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3 class="project-title">Advanced ML Framework for Medical Image Segmentation</h3>
-                    <p class="project-description">
-                        Developed a robust end-to-end ML pipeline for 3D volumetric data segmentation, achieving surgical-grade precision 
-                        in MRI brain extraction. Architected a multi-specialist hierarchical system using XGBoost for intelligent refinement.
-                    </p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">PyTorch</span>
-                        <span class="tech-tag">XGBoost</span>
-                        <span class="tech-tag">CUDA</span>
-                        <span class="tech-tag">RAPIDS</span>
-                        <span class="tech-tag">Medical AI</span>
+            <div class="section-content">
+                <h2 class="section-title">Interactive Projects</h2>
+                <div class="projects-grid">
+                    <!-- Medical Image Segmentation Project -->
+                    <div class="project-card">
+                        <div class="project-animation">
+                            <div class="brain-container">
+                                <div class="non-brain-tissue"></div>
+                                <div class="brain-outline">
+                                    <div class="brain-tissue"></div>
+                                </div>
+                                <div class="segmentation-tool"></div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Advanced ML Framework for Medical Image Segmentation</h3>
+                            <p class="project-description">
+                                Ongoing research developing a robust end-to-end ML pipeline for 3D volumetric data segmentation, achieving surgical-grade precision 
+                                in MRI brain extraction. The animation shows the iterative process of removing non-brain tissue while preserving brain structures.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">PyTorch</span>
+                                <span class="tech-tag">XGBoost</span>
+                                <span class="tech-tag">CUDA</span>
+                                <span class="tech-tag">RAPIDS</span>
+                                <span class="tech-tag">Medical AI</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="project-card">
-                    <h3 class="project-title">AI-Powered Video Dubbing System</h3>
-                    <p class="project-description">
-                        Created an end-to-end deep learning system for automatic video dubbing with lip synchronization. 
-                        Achieved 7.46% Word Error Rate in Speech-to-Text and BLEU score of 64.25% in translation.
-                    </p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Deep Learning</span>
-                        <span class="tech-tag">NLP</span>
-                        <span class="tech-tag">Wav2Lip</span>
-                        <span class="tech-tag">LSTM</span>
-                        <span class="tech-tag">Computer Vision</span>
+                    <!-- AI Video Dubbing Project -->
+                    <div class="project-card">
+                        <div class="dubbing-animation">
+                            <div class="audio-wave">
+                                <div class="wave-bar" style="height: 40px;"></div>
+                                <div class="wave-bar" style="height: 60px;"></div>
+                                <div class="wave-bar" style="height: 30px;"></div>
+                                <div class="wave-bar" style="height: 80px;"></div>
+                                <div class="wave-bar" style="height: 20px;"></div>
+                            </div>
+                            <div class="translation-arrow">→</div>
+                            <div class="lip-sync"></div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">AI-Powered Video Dubbing with Lip Synchronization</h3>
+                            <p class="project-description">
+                                Created an end-to-end deep learning system for automatic video dubbing. Achieved 7.46% Word Error Rate in Speech-to-Text 
+                                and BLEU score of 64.25% in translation with realistic lip-syncing capabilities.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Deep Learning</span>
+                                <span class="tech-tag">NLP</span>
+                                <span class="tech-tag">Wav2Lip</span>
+                                <span class="tech-tag">LSTM</span>
+                                <span class="tech-tag">Computer Vision</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="project-card">
-                    <h3 class="project-title">Interactive Object Recognition with IoT</h3>
-                    <p class="project-description">
-                        Co-authored published research on IoT system for real-time object detection. Built prototype using ESP32-CAM 
-                        with sensor fusion and robotics platform, published in International Journal.
-                    </p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">IoT</span>
-                        <span class="tech-tag">OpenCV</span>
-                        <span class="tech-tag">ESP32</span>
-                        <span class="tech-tag">Robotics</span>
-                        <span class="tech-tag">Published Research</span>
+                    <!-- IoT Object Recognition Project -->
+                    <div class="project-card">
+                        <div class="iot-animation">
+                            <div class="iot-network">
+                                <div class="iot-node"></div>
+                                <div class="iot-node"></div>
+                                <div class="iot-node"></div>
+                                <div class="iot-node"></div>
+                                <div class="iot-node"></div>
+                                <div class="iot-connection" style="top: 50%; left: 50%; width: 100px; transform: translate(-50%, -50%) rotate(0deg);"></div>
+                                <div class="iot-connection" style="top: 50%; left: 50%; width: 100px; transform: translate(-50%, -50%) rotate(90deg);"></div>
+                                <div class="iot-connection" style="top: 50%; left: 50%; width: 141px; transform: translate(-50%, -50%) rotate(45deg);"></div>
+                                <div class="iot-connection" style="top: 50%; left: 50%; width: 141px; transform: translate(-50%, -50%) rotate(-45deg);"></div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Interactive Object Recognition with IoT</h3>
+                            <p class="project-description">
+                                Co-authored published research on IoT system for real-time object detection. Built prototype using ESP32-CAM 
+                                with sensor fusion and robotics platform, published in International Journal.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">IoT</span>
+                                <span class="tech-tag">OpenCV</span>
+                                <span class="tech-tag">ESP32</span>
+                                <span class="tech-tag">Robotics</span>
+                                <span class="tech-tag">Published Research</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="project-card">
-                    <h3 class="project-title">Real-Time IoT Air Quality Monitor</h3>
-                    <p class="project-description">
-                        Designed comprehensive IoT solution for environmental monitoring with multiple sensors. 
-                        Created public dashboard using ThingSpeak for community access to air quality data.
-                    </p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">IoT</span>
-                        <span class="tech-tag">ESP8266</span>
-                        <span class="tech-tag">ThingSpeak</span>
-                        <span class="tech-tag">Environmental Tech</span>
+                    <!-- Air Quality Monitoring Project -->
+                    <div class="project-card">
+                        <div class="project-animation">
+                            <div style="display: flex; justify-content: space-around; align-items: center; height: 100%; padding: 2rem;">
+                                <div style="text-align: center;">
+                                    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(45deg, #00d4ff, #ff0080); animation: sensorPulse 2s ease-in-out infinite; margin: 0 auto 1rem;"></div>
+                                    <div style="color: #00d4ff; font-size: 0.9rem;">AQI Sensor</div>
+                                </div>
+                                <div style="font-size: 2rem; color: #fff; animation: dataTransfer 2s ease-in-out infinite;">📡</div>
+                                <div style="text-align: center;">
+                                    <div style="width: 80px; height: 50px; background: linear-gradient(45deg, rgba(0, 212, 255, 0.3), rgba(255, 0, 128, 0.3)); border-radius: 10px; display: flex; align-items: center; justify-content: center; animation: cloudSync 3s ease-in-out infinite; margin: 0 auto 1rem;">
+                                        <span style="color: #fff; font-size: 0.8rem;">Cloud</span>
+                                    </div>
+                                    <div style="color: #ff0080; font-size: 0.9rem;">ThingSpeak</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Real-Time IoT Air Quality Monitor</h3>
+                            <p class="project-description">
+                                Designed comprehensive IoT solution for environmental monitoring with multiple sensors. 
+                                Created public dashboard using ThingSpeak for community access to air quality data.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">IoT</span>
+                                <span class="tech-tag">ESP8266</span>
+                                <span class="tech-tag">ThingSpeak</span>
+                                <span class="tech-tag">Environmental Tech</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="project-card">
-                    <h3 class="project-title">Financial Modeling: Black-Scholes Implementation</h3>
-                    <p class="project-description">
-                        Developing Python-based implementation of Black-Scholes model for European option pricing. 
-                        Includes critical analysis of model assumptions and real-world limitations.
-                    </p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">FinTech</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">NumPy</span>
-                        <span class="tech-tag">Financial Modeling</span>
+                    <!-- Financial Modeling Project -->
+                    <div class="project-card">
+                        <div class="project-animation">
+                            <div style="display: flex; justify-content: center; align-items: center; height: 100%; flex-direction: column;">
+                                <div style="position: relative; width: 200px; height: 100px;">
+                                    <svg width="200" height="100" style="position: absolute;">
+                                        <path d="M 10 80 Q 50 20 100 40 T 190 30" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.8">
+                                            <animate attributeName="stroke-dasharray" values="0,200;200,200;200,0" dur="3s" repeatCount="indefinite"/>
+                                        </path>
+                                        <path d="M 10 70 Q 60 30 120 50 T 190 40" stroke="#ff0080" stroke-width="2" fill="none" opacity="0.6">
+                                            <animate attributeName="stroke-dasharray" values="0,200;200,200;200,0" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div style="color: #00d4ff; font-size: 1.2rem; margin-top: 1rem; animation: fadeInOut 2s ease-in-out infinite;">Black-Scholes Model</div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Financial Modeling: Black-Scholes Implementation</h3>
+                            <p class="project-description">
+                                Developing Python-based implementation of Black-Scholes model for European option pricing. 
+                                Includes critical analysis of model assumptions and real-world limitations.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">FinTech</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">NumPy</span>
+                                <span class="tech-tag">Financial Modeling</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="project-card">
-                    <h3 class="project-title">Structural Engineering Challenge</h3>
-                    <p class="project-description">
-                        Applied structural engineering principles to design high-strength bridge using ice cream sticks. 
-                        Successfully supported over 75kg load through optimized truss design.
-                    </p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Structural Design</span>
-                        <span class="tech-tag">Prototyping</span>
-                        <span class="tech-tag">Load Testing</span>
-                        <span class="tech-tag">Material Science</span>
+                    <!-- Structural Engineering Project -->
+                    <div class="project-card">
+                        <div class="project-animation">
+                            <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <div style="position: relative;">
+                                    <div style="width: 150px; height: 80px; border-left: 3px solid #00d4ff; border-bottom: 3px solid #00d4ff; border-right: 3px solid #00d4ff; position: relative; animation: bridgeStress 4s ease-in-out infinite;">
+                                        <div style="position: absolute; top: -3px; left: 25%; width: 50%; height: 3px; background: #ff0080; animation: loadTest 4s ease-in-out infinite;"></div>
+                                        <div style="position: absolute; top: 10px; left: 20%; width: 2px; height: 60px; background: #00d4ff; transform: rotate(45deg); transform-origin: bottom;"></div>
+                                        <div style="position: absolute; top: 10px; right: 20%; width: 2px; height: 60px; background: #00d4ff; transform: rotate(-45deg); transform-origin: bottom;"></div>
+                                        <div style="position: absolute; top: 10px; left: 50%; width: 2px; height: 60px; background: #00d4ff; transform: translateX(-50%);"></div>
+                                    </div>
+                                    <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); color: #ff0080; font-weight: bold; animation: weightDisplay 4s ease-in-out infinite;">75kg</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Structural Engineering Challenge</h3>
+                            <p class="project-description">
+                                Applied structural engineering principles to design high-strength bridge using ice cream sticks. 
+                                Successfully supported over 75kg load through optimized truss design.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Structural Design</span>
+                                <span class="tech-tag">Prototyping</span>
+                                <span class="tech-tag">Load Testing</span>
+                                <span class="tech-tag">Material Science</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -629,97 +963,99 @@
 
     <section id="skills" class="section">
         <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3>Programming & Development</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Python</span>
-                            <span>95%</span>
+            <div class="section-content">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Programming & Development</h3>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Python</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95"></div>
+                            </div>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="95"></div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>C/C++</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Algorithms</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>C/C++</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="85"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Algorithms</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="90"></div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="skill-category">
-                    <h3>Machine Learning & AI</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Machine Learning</span>
-                            <span>92%</span>
+                    <div class="skill-category">
+                        <h3>Machine Learning & AI</h3>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Machine Learning</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="92"></div>
+                            </div>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="92"></div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Deep Learning</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>NLP</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Deep Learning</span>
-                            <span>88%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="88"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>NLP</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="85"></div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="skill-category">
-                    <h3>Specialized Technologies</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>PyTorch/CUDA</span>
-                            <span>88%</span>
+                    <div class="skill-category">
+                        <h3>Specialized Technologies</h3>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>PyTorch/CUDA</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="88"></div>
+                            </div>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="88"></div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>IoT/Embedded</span>
+                                <span>82%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="82"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>IoT/Embedded</span>
-                            <span>82%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="82"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Data Analysis</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="90"></div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Data Analysis</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -729,27 +1065,29 @@
 
     <section id="contact" class="section">
         <div class="container">
-            <h2 class="section-title">Let's Connect</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">📧</div>
-                    <h3>Email</h3>
-                    <p>akhil14111999@gmail.com</p>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">📱</div>
-                    <h3>Phone</h3>
-                    <p>+91 79035 32690</p>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">💼</div>
-                    <h3>LinkedIn</h3>
-                    <p>linkedin.com/in/akhil-8502721a2</p>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">📍</div>
-                    <h3>Location</h3>
-                    <p>D-31 South, Doordarshan Vihar<br>Khajpura, Patna-800014</p>
+            <div class="section-content">
+                <h2 class="section-title">Let's Connect</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <h3>Email</h3>
+                        <p>akhil14111999@gmail.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <h3>Phone</h3>
+                        <p>+91 79035 32690</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">💼</div>
+                        <h3>LinkedIn</h3>
+                        <p>linkedin.com/in/akhil-8502721a2</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <h3>Location</h3>
+                        <p>D-31 South, Doordarshan Vihar<br>Khajpura, Patna-800014</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -761,116 +1099,180 @@
         </div>
     </footer>
 
-    <script>
-        // Create floating particles
-        function createParticles() {
-            const particlesContainer = document.querySelector('.particles');
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.width = Math.random() * 10 + 5 + 'px';
-                particle.style.height = particle.style.width;
-                particle.style.animationDelay = Math.random() * 6 + 's';
-                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
-                particlesContainer.appendChild(particle);
-            }
+    <style>
+        @keyframes sensorPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 212, 255, 0.5); }
+            50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(0, 212, 255, 0.8); }
         }
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+        @keyframes dataTransfer {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(180deg); }
+        }
+
+        @keyframes cloudSync {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); box-shadow: 0 0 15px rgba(255, 0, 128, 0.5); }
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes bridgeStress {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.95); }
+        }
+
+        @keyframes loadTest {
+            0%, 100% { background: #ff0080; }
+            50% { background: #ff4040; }
+        }
+
+        @keyframes weightDisplay {
+            0%, 100% { transform: translateX(-50%) scale(1); color: #ff0080; }
+            50% { transform: translateX(-50%) scale(1.1); color: #ff4040; }
+        }
+    </style>
+
+    <script>
+        // Apple-style scroll animations
+        function initScrollAnimations() {
+            const sections = document.querySelectorAll('.section-content');
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all elements
+            [...sections, ...timelineItems, ...projectCards].forEach(item => {
+                observer.observe(item);
+            });
+        }
+
+        // Smooth scrolling for navigation
+        function initSmoothScrolling() {
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 });
             });
-        });
+        }
 
-        // Navigation background change on scroll
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+        // Navigation background change
+        function initNavbarEffects() {
+            window.addEventListener('scroll', () => {
+                const navbar = document.getElementById('navbar');
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
                 }
             });
-        }, observerOptions);
-
-        // Observe timeline items and project cards
-        document.querySelectorAll('.timeline-item, .project-card').forEach(item => {
-            observer.observe(item);
-        });
+        }
 
         // Skill bars animation
-        const skillObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const skillBars = entry.target.querySelectorAll('.skill-progress');
-                    skillBars.forEach(bar => {
-                        const width = bar.getAttribute('data-width');
-                        setTimeout(() => {
-                            bar.style.width = width + '%';
-                        }, 500);
-                    });
+        function initSkillBars() {
+            const skillObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const skillBars = entry.target.querySelectorAll('.skill-progress');
+                        skillBars.forEach(bar => {
+                            const width = bar.getAttribute('data-width');
+                            setTimeout(() => {
+                                bar.style.width = width + '%';
+                            }, 500);
+                        });
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('.skill-category').forEach(category => {
+                skillObserver.observe(category);
+            });
+        }
+
+        // Parallax effect
+        function initParallaxEffects() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const heroContent = document.querySelector('.hero-content');
+                
+                if (heroContent && scrolled < window.innerHeight) {
+                    heroContent.style.transform = `translateY(${scrolled * 0.5}px) scale(${1 - scrolled * 0.0002})`;
+                    heroContent.style.opacity = 1 - scrolled * 0.001;
                 }
             });
-        }, observerOptions);
+        }
 
-        document.querySelectorAll('.skill-category').forEach(category => {
-            skillObserver.observe(category);
-        });
-
-        // Initialize particles
-        createParticles();
-
-        // Add some interactive hover effects
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
+        // Enhanced project card interactions
+        function initProjectInteractions() {
+            document.querySelectorAll('.project-card').forEach((card, index) => {
+                card.style.transitionDelay = `${index * 0.1}s`;
+                
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px) scale(1.02) rotateX(5deg)';
+                    this.style.boxShadow = '0 30px 60px rgba(0, 212, 255, 0.3)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1) rotateX(0deg)';
+                    this.style.boxShadow = 'none';
+                });
             });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
+        }
+
+        // Initialize all features
+        document.addEventListener('DOMContentLoaded', function() {
+            initScrollAnimations();
+            initSmoothScrolling();
+            initNavbarEffects();
+            initSkillBars();
+            initParallaxEffects();
+            initProjectInteractions();
         });
 
-        // Contact item animations
-        document.querySelectorAll('.contact-item').forEach((item, index) => {
-            item.style.animationDelay = (index * 0.1) + 's';
-            item.style.animation = 'fadeInUp 0.6s ease-out forwards';
+        // Add dynamic cursor effect
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.querySelector('.cursor') || createCursor();
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
         });
 
-        // Add a subtle parallax effect to hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero-content');
-            const particles = document.querySelector('.particles');
-            
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-            if (particles) {
-                particles.style.transform = `translateY(${scrolled * 0.3}px)`;
-            }
-        });
+        function createCursor() {
+            const cursor = document.createElement('div');
+            cursor.className = 'cursor';
+            cursor.style.cssText = `
+                position: fixed;
+                width: 20px;
+                height: 20px;
+                background: radial-gradient(circle, rgba(0, 212, 255, 0.5), rgba(255, 0, 128, 0.5));
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                mix-blend-mode: difference;
+                transition: transform 0.1s ease;
+            `;
+            document.body.appendChild(cursor);
+            return cursor;
+        }
     </script>
 </body>
 </html>
