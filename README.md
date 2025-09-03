@@ -2,7 +2,7 @@
 
 Welcome to the repository for my personal portfolio website. This is a fully responsive, single-page site designed to showcase my journey, projects, and skills as I transitioned from Mechanical Engineering to the field of AI/ML. The design is modern, with a dark theme and engaging animations to create a memorable user experience.
 
-### [➡️ View Live Demo]([https://your-github-username.github.io/your-repo-name/](https://akhil717.github.io/))
+### [➡️ View Live Demo](https://akhil717.github.io/your-repo-name/)
 
 
 
