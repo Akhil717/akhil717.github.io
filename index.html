@@ -249,6 +249,8 @@
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             min-height: 500px;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card.visible {
@@ -274,6 +276,9 @@
 
         .project-content {
             padding: 2.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-title {
@@ -287,12 +292,32 @@
             color: rgba(255, 255, 255, 0.7);
             margin-bottom: 2rem;
             line-height: 1.7;
+            flex-grow: 1;
+        }
+        
+        .project-description ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .project-description li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .project-description li::before {
+            content: '»';
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
         }
 
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.8rem;
+            margin-top: auto;
         }
 
         .tech-tag {
@@ -686,16 +711,13 @@
                             </svg>
                         </div>
                         <div class="project-content">
-                            <h3 class="project-title">Surgical-Grade Brain Tissue Extraction: Surpassing SOTA Performance with a Classical Machine Learning Framework</h3>
+                            <h3 class="project-title">Surgical-Grade Brain Tissue Extraction using ML</h3>
                             <p class="project-description">
-                                <ul>    
-                                    <li><strong>Beyond Deep Learning:</strong> A classical, feature-driven AI that delivers unprecedented accuracy.</li>
-                                    <br>
-                                    <li><strong>Surgical-Grade Precision:</strong> Intelligently segments complex brain structures, ready for clinical applications.</li>
-                                    <br>
-                                    <li><strong>Surpassing SOTA:</strong> Consistently outperforms existing state-of-the-art benchmarks in brain tissue extraction.</li>
+                                <ul>
+                                    <li>Architected a novel, feature-driven ML algorithm for brain tissue segmentation, achieving near surgical-grade accuracy while prioritising model interpretability.</li>
+                                    <li>Pioneered a data-efficient approach generating whole-brain masks from just 5-10 reference slices per patient, eliminating the need for large annotated datasets.</li>
+                                    <li>Engineered a high-throughput processing pipeline using CUDA and RAPIDS to accelerate medical image analysis and ensure scalability for large-volume MRI scans.</li>
                                 </ul>
-                                <br>
                             </p>
                             <div class="tech-tags">
                                 <span class="tech-tag">PyTorch</span>
@@ -718,16 +740,13 @@
                                     <rect class="text-bubble" x="40" y="30" width="120" height="50" rx="10"/>
                                     <text class="speech-text" x="100" y="65">你好</text>
                                 </g>
-
                                 <g transform="translate(400, 150) scale(1.2)">
                                     <rect class="ai-model-box" x="-50" y="-50" width="100" height="100" rx="15"/>
                                     <text class="ai-text" x="0" y="5">AI</text>
                                 </g>
-
                                 <path class="flow-arrow" d="M200,150 H330" marker-end="url(#arrowhead)"/>
                                 <path class="flow-arrow" d="M470,150 H600" marker-end="url(#arrowhead)" style="animation-delay: 3s;"/>
                                 <defs><marker id="arrowhead" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#00d4ff"/></marker></defs>
-
                                 <g class="output-group">
                                     <g class="person-icon" transform="translate(700, 150)">
                                         <circle cx="0" cy="-25" r="25"/>
@@ -739,15 +758,13 @@
                             </svg>
                         </div>
                         <div class="project-content">
-                            <h3 class="project-title">AI-Powered Video Dubbing with Lip Synchronization</h3>
+                            <h3 class="project-title">AI-Powered Video Dubbing with Lip-Sync</h3>
                             <p class="project-description">
                                 <ul>
-                                    <li><strong>End-to-End Automation:</strong>A complete pipeline that handles everything from speech transcription and translation to voice generation and final video rendering.</li><br>
-                                    <li><strong>Precision at Every Step:</strong>Utilizes state-of-the-art models like Bidirectional LSTMs and Wav2Lip to achieve high-fidelity translation (up to 64.25 BLEU) and realistic lip-syncing.</li><br>
-                                    <li><strong>Future Scope:</strong> To enhance the model to understand and transfer emotional tone for more natural, expressive dubbing.</li><br>
-                                    <li><strong>Github Link:</strong><a href="https://github.com/kmAyush/Video-Dubbing-with-Lip-Synchronization?tab=readme-ov-file"> Link</a></li><br>
+                                    <li>Conceptualised and led the development of a generative AI pipeline integrating Wav2Lip and a Bi-directional LSTM for fully automated, lip-synced video dubbing.</li>
+                                    <li>Trained and deployed a Bi-directional LSTM for the translation module, achieving a 64.25% BLEU score on the evaluation dataset.</li>
+                                    <li>Managed the full project lifecycle from model integration to final deployment, demonstrating strong team leadership and project management skills.</li>
                                 </ul>
-                                <br>
                             </p>
                             <div class="tech-tags">
                                 <span class="tech-tag">Deep Learning</span>
@@ -761,48 +778,182 @@
 
                     <div class="project-card">
                         <div class="project-animation-container">
-                            <svg class="iot-sensing-svg" viewBox="0 0 400 250">
+                            <svg viewBox="0 0 200 200" width="150" height="150">
+                                <path d="M 50,50 Q 100,20 150,50 T 150,150 Q 100,180 50,150 T 50,50 Z" fill="rgba(0, 212, 255, 0.2)" stroke="#00d4ff" stroke-width="2"/>
+                                <circle cx="100" cy="100" r="20" fill="rgba(255,0,128,0.5)" stroke="#ff0080" stroke-width="2">
+                                    <animate attributeName="r" values="20;25;20" dur="3s" repeatCount="indefinite" />
+                                </circle>
+                                <line x1="130" y1="130" x2="110" y2="110" stroke="#ff0080" stroke-width="3">
+                                    <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="8s" repeatCount="indefinite" />
+                                </line>
+                                <circle cx="135" cy="135" r="15" fill="none" stroke="#ff0080" stroke-width="2" stroke-dasharray="4 2">
+                                     <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="8s" repeatCount="indefinite" />
+                                </circle>
+                            </svg>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Lesion Master - AI-Powered Medical Image Segmentation</h3>
+                            <p class="project-description">
+                                <ul>
+                                    <li>Developed a unique and fast annotation tool using superpixel segmentation for precise medical image labeling.</li>
+                                    <li>Integrated a modular AI pipeline that allows users to select the appropriate model (e.g., oral, brain) for efficient, automated segmentation.</li>
+                                    <li>Engineered the software to extract critical quantitative data from annotations, including lesion area and statistical metrics for downstream analysis.</li>
+                                </ul>
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Superpixels</span>
+                                <span class="tech-tag">AI Pipeline</span>
+                                <span class="tech-tag">DICOM</span>
+                                <span class="tech-tag">Medical AI</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-animation-container">
+                            <svg viewBox="-10 -10 120 120" width="120" height="120">
                                 <defs>
-                                    <radialGradient id="lightGradient">
-                                        <stop offset="0%" stop-color="rgba(255, 255, 200, 0.7)"/>
-                                        <stop offset="100%" stop-color="rgba(255, 255, 200, 0)"/>
-                                    </radialGradient>
+                                    <filter id="glow-3d">
+                                        <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                                        <feMerge>
+                                            <feMergeNode in="coloredBlur"/>
+                                            <feMergeNode in="SourceGraphic"/>
+                                        </feMerge>
+                                    </filter>
                                 </defs>
-                                
-                                <g class="robot-group" transform="translate(80, 240)">
-                                    <!-- Robot body -->
-                                    <rect class="robot-body" x="-11" y="+200" width="50" height="40" rx="5"/>
-                                    <!-- Robot camera -->
-                                    <circle class="robot-camera" cx="14" cy="190" r="10"/>
-                                    <!-- Torch light now originates from the center of the camera -->
-                                    <polygon class="torch-light" points="14,190 250,-150 250,50" transform-origin="14 190"/>
+                                <g id="cube" style="transform-style: preserve-3d; animation: rotate3D 10s linear infinite; filter: url(#glow-3d);">
+                                    <circle cx="50" cy="50" r="40" fill="none" stroke="#00d4ff" stroke-width="1" transform="rotate(90 50 50)"/>
+                                    <ellipse cx="50" cy="50" rx="40" ry="20" fill="none" stroke="#ff0080" stroke-width="1"/>
                                 </g>
+                            </svg>
+                            <style>
+                                @keyframes rotate3D { from { transform: rotateY(0deg) rotateX(10deg); } to { transform: rotateY(360deg) rotateX(10deg); } }
+                            </style>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Brain Tumor Visualisation in 3D</h3>
+                            <p class="project-description">
+                                <ul>
+                                    <li>Developed a sophisticated MRI visualization and analysis tool leveraging supervoxel segmentation to precisely identify anatomical structures.</li>
+                                    <li>Implemented a pipeline for automated extraction of quantitative biomarkers like tumor volume, intensity, and spatial statistics.</li>
+                                    <li>Delivered a complete, production-ready solution in Python, optimized for macOS, for interactive 3D medical image exploration.</li>
+                                </ul>
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">3D Visualization</span>
+                                <span class="tech-tag">Supervoxels</span>
+                                <span class="tech-tag">MRI</span>
+                                <span class="tech-tag">Python</span>
+                            </div>
+                        </div>
+                    </div>
 
-                                <circle class="ball" cx="300" cy="150" r="30"/>
+                    <div class="project-card">
+                        <div class="project-animation-container">
+                            <svg viewBox="0 0 300 150">
+                                <path d="M 20 120 L 280 120 M 20 120 L 20 20" stroke="rgba(255,255,255,0.3)" stroke-width="2" />
+                                <path d="M 30 100 Q 80 40, 130 80 T 230 60 L 270 90" stroke="#00d4ff" fill="none" stroke-width="3">
+                                    <animate attributeName="d" values="M 30 100 Q 80 80, 130 100 T 230 80 L 270 100; M 30 100 Q 80 40, 130 80 T 230 60 L 270 90; M 30 100 Q 80 80, 130 100 T 230 80 L 270 100" dur="4s" repeatCount="indefinite" />
+                                </path>
+                                <path d="M 30 90 L 80 70 L 130 90 L 180 60 L 230 80 L 270 50" stroke="#ff0080" fill="none" stroke-width="2" opacity="0.7">
+                                     <animate attributeName="d" values="M 30 90 L 80 90 L 130 90 L 180 90 L 230 90 L 270 90; M 30 90 L 80 70 L 130 90 L 180 60 L 230 80 L 270 50; M 30 90 L 80 90 L 130 90 L 180 90 L 230 90 L 270 90" dur="4s" repeatCount="indefinite" />
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Advanced Time-Series Forecasting for Market Volatility</h3>
+                            <p class="project-description">
+                                <ul>
+                                    <li>Engineered and benchmarked a GARCH(1,1) model against a PyTorch-based LSTM network for a complex time-series forecasting task.</li>
+                                    <li>Implemented a sequential data processing pipeline to transform raw temporal data into structured features suitable for time-series modeling.</li>
+                                    <li>Demonstrated the LSTM's superior performance in capturing non-linear temporal dependencies, resulting in a significantly lower RMSE.</li>
+                                </ul>
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Time-Series</span>
+                                <span class="tech-tag">GARCH</span>
+                                <span class="tech-tag">LSTM</span>
+                                <span class="tech-tag">PyTorch</span>
+                                <span class="tech-tag">Quantitative Finance</span>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="project-card">
+                        <div class="project-animation-container" style="background-color: #333; padding: 20px; border-radius: 10px;">
+                            <svg viewBox="0 0 300 150" font-family="sans-serif">
+                                <text x="30" y="83" font-size="20" fill="#fff">📰</text>
+                                
+                                <path d="M 60 75 H 100" stroke="#fff" stroke-width="2" stroke-dasharray="5 3">
+                                    <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="1s" repeatCount="indefinite"/>
+                                </path>
+                                
+                                <rect x="100" y="50" width="100" height="50" rx="5" fill="rgba(255, 0, 128, 0.2)" stroke="#ff0080" stroke-width="2"/>
+                                <text x="150" y="80" text-anchor="middle" fill="#ff0080" font-weight="bold">FinBERT</text>
+                                
+                                <path d="M 200 75 H 240" stroke="#fff" stroke-width="2" stroke-dasharray="5 3">
+                                    <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="1s" repeatCount="indefinite"/>
+                                </path>
+                                
                                 <g>
-                                    <text class="detection-text" x="300" y="50" style="font-size: 15px;">Object:Ball</text>
-                                    <text class="detection-text" x="300" y="70" style="font-size: 15px;">Distance: 22.00 m</text>
+                                    <path d="M 250 65 L 260 55 L 270 65" fill="none" stroke="green" stroke-width="3">
+                                        <animate attributeName="opacity" values="1; 0; 1" keyTimes="0; 0.5; 1" dur="1.5s" repeatCount="indefinite" />
+                                    </path>
+                                    
+                                    <path d="M 250 85 L 260 95 L 270 85" fill="none" stroke="red" stroke-width="3">
+                                        <animate attributeName="opacity" values="0; 1; 0" keyTimes="0; 0.5; 1" dur="1.5s" repeatCount="indefinite" />
+                                    </path>
                                 </g>
                             </svg>
                         </div>
                         <div class="project-content">
-                            <h3 class="project-title">Object Sensing and Detection using IoT</h3>
+                            <h3 class="project-title">Quantitative Analysis of Market Sentiment using NLP</h3>
                             <p class="project-description">
                                 <ul>
-                                    <li><strong>Published Research:</strong>Co-authored and published a peer-reviewed paper on this novel system in the International Journal of Electronics Communication and Computer Engineering.</li><br>
-                                    <li><strong>Intelligent Sensor Fusion:</strong>Engineered a system that combines visual data from a camera with spatial data from an ultrasonic sensor to identify an object's what and where.</li><br>
-                                    <li><strong>Dynamic Field of View:</strong>Integrated a pan-tilt robotics platform, allowing the system to actively scan its environment and overcome the limitations of static cameras.</li><br>
-
+                                    <li>Developed an NLP pipeline to quantify financial news sentiment, investigating its efficacy as a potential alpha factor for predicting S&P 500 returns.</li>
+                                    <li>Leveraged Hugging Face Transformers to deploy FinBERT, achieving high accuracy in domain-specific sentiment classification on financial text.</li>
+                                    <li>Performed statistical analysis validating a significant positive correlation between aggregated daily sentiment and subsequent market movements.</li>
                                 </ul>
-                                <br>
                             </p>
                             <div class="tech-tags">
-                                <span class="tech-tag">IoT</span>
-                                <span class="tech-tag">OpenCV</span>
-                                <span class="tech-tag">ESP32</span>
-                                <span class="tech-tag">Robotics</span>
-                                <span class="tech-tag">Published Research</span>
+                                <span class="tech-tag">NLP</span>
+                                <span class="tech-tag">Transformers</span>
+                                <span class="tech-tag">FinBERT</span>
+                                <span class="tech-tag">Quantitative Finance</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-animation-container">
+                            <div style="display: flex; justify-content: center; align-items: center; height: 100%; flex-direction: column;">
+                                <div style="position: relative; width: 200px; height: 100px;">
+                                    <svg width="200" height="100" style="position: absolute;">
+                                        <path d="M 10 80 Q 50 20 100 40 T 190 30" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.8">
+                                            <animate attributeName="stroke-dasharray" values="0,200;200,200;200,0" dur="3s" repeatCount="indefinite"/>
+                                        </path>
+                                        <path d="M 10 70 Q 60 30 120 50 T 190 40" stroke="#ff0080" stroke-width="2" fill="none" opacity="0.6">
+                                            <animate attributeName="stroke-dasharray" values="0,200;200,200;200,0" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div style="color: #00d4ff; font-size: 1.2rem; margin-top: 1rem; animation: fadeInOutFinance 2s ease-in-out infinite;">Black-Scholes Model</div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Financial Modeling: Black-Scholes Implementation</h3>
+                            <p class="project-description">
+                                <ul>
+                                    <li>Developed a robust Python implementation of the Black-Scholes model to perform European option valuation and calculate key risk metrics (Greeks).</li>
+                                    <li>Conducted empirical analysis on historical market data to backtest the model's core assumptions, identifying divergence from real-world market behavior.</li>
+                                    <li>Engineered the tool as a modular solution designed for seamless integration into a larger automated trading strategy framework.</li>
+                                </ul>
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">FinTech</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">NumPy</span>
+                                <span class="tech-tag">Financial Modeling</span>
                             </div>
                         </div>
                     </div>
@@ -827,95 +978,65 @@
                             <h3 class="project-title">Real-Time IoT Air Quality Monitor</h3>
                             <p class="project-description">
                                 <ul>
-                                    <li><strong>From Sensor to Screen:</strong> An end-to-end IoT solution that captures, processes, and displays live environmental data from a custom-built hardware device.</li><br>
-                                    <li><strong>Live Environmental Insights:</strong> Integrated multiple sensors (AQI, CO, Temp/Humidity) with an ESP microcontroller to provide a continuous, real-time data stream.</li><br>
-                                    <li><strong>Public Data Accessibility: </strong>Deployed a public-facing dashboard using the ThingSpeak cloud platform, making critical air quality information easily accessible to the community.</li><br>
+                                    <li>Designed and deployed a robust ETL Pipeline using Python to handle and process real-time data streamed from an IoT sensor solution.</li>
+                                    <li>Built the full-stack system architecture, including the hardware interface and a cloud visualization platform for continuous monitoring.</li>
+                                    <li>Gained foundational experience in Time-Series Analysis and implemented data handling logic to ensure system reliability.</li>
                                 </ul>
-                                <br>
                             </p>
                             <div class="tech-tags">
                                 <span class="tech-tag">IoT</span>
-                                <span class="tech-tag">ESP8266</span>
+                                <span class="tech-tag">Python</span>
                                 <span class="tech-tag">ThingSpeak</span>
-                                <span class="tech-tag">Environmental Tech</span>
+                                <span class="tech-tag">ETL</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="project-card">
                         <div class="project-animation-container">
-                            <div style="display: flex; justify-content: center; align-items: center; height: 100%; flex-direction: column;">
-                                <div style="position: relative; width: 200px; height: 100px;">
-                                    <svg width="200" height="100" style="position: absolute;">
-                                        <path d="M 10 80 Q 50 20 100 40 T 190 30" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.8">
-                                            <animate attributeName="stroke-dasharray" values="0,200;200,200;200,0" dur="3s" repeatCount="indefinite"/>
-                                        </path>
-                                        <path d="M 10 70 Q 60 30 120 50 T 190 40" stroke="#ff0080" stroke-width="2" fill="none" opacity="0.6">
-                                            <animate attributeName="stroke-dasharray" values="0,200;200,200;200,0" dur="3s" begin="0.5s" repeatCount="indefinite"/>
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div style="color: #00d4ff; font-size: 1.2rem; margin-top: 1rem; animation: fadeInOutFinance 2s ease-in-out infinite;">Black-Scholes Model</div>
-                            </div>
+                            <svg class="iot-sensing-svg" viewBox="0 0 400 250">
+                                <defs>
+                                    <radialGradient id="lightGradient">
+                                        <stop offset="0%" stop-color="rgba(255, 255, 200, 0.7)"/>
+                                        <stop offset="100%" stop-color="rgba(255, 255, 200, 0)"/>
+                                    </radialGradient>
+                                </defs>
+                                
+                                <g class="robot-group" transform="translate(80, 240)">
+                                    <rect class="robot-body" x="-11" y="+200" width="50" height="40" rx="5"/>
+                                    <circle class="robot-camera" cx="14" cy="190" r="10"/>
+                                    <polygon class="torch-light" points="14,190 250,-150 250,50" transform-origin="14 190"/>
+                                </g>
+
+                                <circle class="ball" cx="300" cy="150" r="30"/>
+
+                                <g>
+                                    <text class="detection-text" x="300" y="50" style="font-size: 15px;">Object Identified</text>
+                                </g>
+                            </svg>
                         </div>
                         <div class="project-content">
-                            <h3 class="project-title">Financial Modeling: Black-Scholes Implementation <br>(Ongoing)</h3> </h3>
+                            <h3 class="project-title">Object Sensing and Identification using IoT</h3>
                             <p class="project-description">
                                 <ul>
-                                    <li><strong>Quantitative Finance in Code: </strong>Implementing the foundational Black-Scholes model in Python to calculate the theoretical value of European-style options.</li><br>
-                                    <li><strong>Beyond the Formula: </strong>The project includes a critical analysis of the model's core assumptions and its limitations in real-world market scenarios. </li><br>
-                                    <li><strong>Cross-Domain Initiative: </strong> A self-driven project to apply algorithmic and analytical skills to the complex domain of financial technology (FinTech).</li><br>
-
-
+                                    <li>Authored and published a peer-reviewed paper on Object Sensing and Identification in the IJECCE journal.</li>
+                                    <li>Designed and implemented classification algorithms for automated object identification, utilizing basic feature extraction techniques.</li>
+                                    <li>Successfully integrated the identification model within a functional IoT framework to enable real-time sensing and reliable data capture.</li>
                                 </ul>
-                                <br>
                             </p>
                             <div class="tech-tags">
-                                <span class="tech-tag">FinTech</span>
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">NumPy</span>
-                                <span class="tech-tag">Financial Modeling</span>
+                                <span class="tech-tag">IoT</span>
+                                <span class="tech-tag">OpenCV</span>
+                                <span class="tech-tag">Computer Vision</span>
+                                <span class="tech-tag">Published Research</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                        <div class="project-animation-container">
-                            <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
-                                <div style="position: relative;">
-                                    <div style="width: 150px; height: 80px; border-left: 3px solid #00d4ff; border-bottom: 3px solid #00d4ff; border-right: 3px solid #00d4ff; position: relative; animation: bridgeStress 4s ease-in-out infinite;">
-                                        <div style="position: absolute; top: -3px; left: 25%; width: 50%; height: 3px; background: #ff0080; animation: loadTest 4s ease-in-out infinite;"></div>
-                                        <div style="position: absolute; top: 10px; left: 20%; width: 2px; height: 60px; background: #00d4ff; transform: rotate(45deg); transform-origin: bottom;"></div>
-                                        <div style="position: absolute; top: 10px; right: 20%; width: 2px; height: 60px; background: #00d4ff; transform: rotate(-45deg); transform-origin: bottom;"></div>
-                                        <div style="position: absolute; top: 10px; left: 50%; width: 2px; height: 60px; background: #00d4ff; transform: translateX(-50%);"></div>
-                                    </div>
-                                    <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); color: #ff0080; font-weight: bold; animation: weightDisplay 4s ease-in-out infinite;">75kg</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Structural Engineering Challenge (Fun Project)</h3>
-                            <p class="project-description">
-                                <ul>
-                                    <li><strong>Theory to Practice: </strong>Applied principles of structural and mechanical engineering to design and construct a high-strength, load-bearing bridge.</li><br>
-                                    <li><strong>Exceptional Load Capacity:</strong> The final truss-based structure successfully withstood a static load of over 75kg, demonstrating a highly effective and optimized design.</li><br>
-                                    <li><strong>Design Under Constraints:</strong> Solved a complex engineering problem using only readily available materials (Ice cream sticks and Fevicol), showcasing creative problem-solving.</li><br>
-                                </ul>
-                                <br>
-                                </p>
-                            <div class="tech-tags">
-                                <span class="tech-tag">Structural Design</span>
-                                <span class="tech-tag">Prototyping</span>
-                                <span class="tech-tag">Load Testing</span>
-                                <span class="tech-tag">Material Science</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
-
     <section id="skills" class="section">
     <div class="container">
         <div class="section-content">
