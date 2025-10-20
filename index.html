@@ -238,7 +238,7 @@
         }
 
         .project-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            background: #000000;
             border-radius: 25px;
             padding: 0;
             position: relative;
@@ -246,7 +246,7 @@
             opacity: 0;
             transform: translateY(100px) scale(0.8);
             transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            backdrop-filter: blur(15px);
+            backdrop-filter: none;
             border: 1px solid rgba(255, 255, 255, 0.1);
             min-height: 500px;
             display: flex;
@@ -272,6 +272,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .project-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* object-position: center; */
+            object-position: X_VALUE Y_VALUE;
+            border-radius: 25px 25px 0 0;
         }
 
         .project-content {
@@ -699,16 +708,13 @@
                 <div class="projects-grid">
                     <div class="project-card">
                         <div class="project-animation-container">
-                            <svg class="segmentation-svg" viewBox="0 0 400 400">
-                                <defs>
-                                    <clipPath id="brainClip">
-                                        <path d="M200,50 C120,50 80,120 100,200 C120,280 150,350 200,350 C250,350 280,280 300,200 C320,120 280,50 200,50 Z M150,150 C140,180 160,220 180,230 C200,240 220,210 230,190 C240,170 210,130 190,140 C170,150 160,120 150,150 Z" />
-                                    </clipPath>
-                                </defs>
-                                <rect class="non-brain-mask" x="0" y="0" width="400" height="400" clip-path="url(#brainClip)" transform-origin="center" transform="scale(1.2)"/>
-                                <path class="brain-path" d="M200,50 C120,50 80,120 100,200 C120,280 150,350 200,350 C250,350 280,280 300,200 C320,120 280,50 200,50 Z M150,150 C140,180 160,220 180,230 C200,240 220,210 230,190 C240,170 210,130 190,140 C170,150 160,120 150,150 Z" />
-                                <path class="cropper-tool" d="M200,50 C120,50 80,120 100,200 C120,280 150,350 200,350 C250,350 280,280 300,200 C320,120 280,50 200,50 Z" />
-                            </svg>
+                            <video class="project-video" autoplay muted loop playsinline 
+                                   data-zoom="1.4" 
+                                   data-shift-x="15" 
+                                   data-shift-y="-10">
+                                <source src="Splash/Brain tissue extraction.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">Surgical-Grade Brain Tissue Extraction using ML</h3>
@@ -731,31 +737,13 @@
 
                     <div class="project-card">
                         <div class="project-animation-container">
-                             <svg class="dubbing-svg" viewBox="0 0 800 300">
-                                <g class="input-group">
-                                    <g class="person-icon" transform="translate(100, 150)">
-                                        <circle cx="0" cy="-25" r="25"/>
-                                        <path d="M-40,25 Q0,-10 40,25 Z"/>
-                                    </g>
-                                    <rect class="text-bubble" x="40" y="30" width="120" height="50" rx="10"/>
-                                    <text class="speech-text" x="100" y="65">你好</text>
-                                </g>
-                                <g transform="translate(400, 150) scale(1.2)">
-                                    <rect class="ai-model-box" x="-50" y="-50" width="100" height="100" rx="15"/>
-                                    <text class="ai-text" x="0" y="5">AI</text>
-                                </g>
-                                <path class="flow-arrow" d="M200,150 H330" marker-end="url(#arrowhead)"/>
-                                <path class="flow-arrow" d="M470,150 H600" marker-end="url(#arrowhead)" style="animation-delay: 3s;"/>
-                                <defs><marker id="arrowhead" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#00d4ff"/></marker></defs>
-                                <g class="output-group">
-                                    <g class="person-icon" transform="translate(700, 150)">
-                                        <circle cx="0" cy="-25" r="25"/>
-                                        <path d="M-40,25 Q0,-10 40,25 Z"/>
-                                    </g>
-                                    <rect class="text-bubble" x="630" y="30" width="140" height="50" rx="10"/>
-                                    <text class="speech-text" x="700" y="65">नमस्ते</text>
-                                </g>
-                            </svg>
+                            <video class="project-video" autoplay muted loop playsinline 
+                                   data-zoom="1" 
+                                   data-shift-x="52 
+                                   data-shift-y="-10">
+                                <source src="Splash/Ai powered Video Dubbing (online-video-cutter.com)_2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">AI-Powered Video Dubbing with Lip-Sync</h3>
@@ -778,18 +766,13 @@
 
                     <div class="project-card">
                         <div class="project-animation-container">
-                            <svg viewBox="0 0 200 200" width="150" height="150">
-                                <path d="M 50,50 Q 100,20 150,50 T 150,150 Q 100,180 50,150 T 50,50 Z" fill="rgba(0, 212, 255, 0.2)" stroke="#00d4ff" stroke-width="2"/>
-                                <circle cx="100" cy="100" r="20" fill="rgba(255,0,128,0.5)" stroke="#ff0080" stroke-width="2">
-                                    <animate attributeName="r" values="20;25;20" dur="3s" repeatCount="indefinite" />
-                                </circle>
-                                <line x1="130" y1="130" x2="110" y2="110" stroke="#ff0080" stroke-width="3">
-                                    <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="8s" repeatCount="indefinite" />
-                                </line>
-                                <circle cx="135" cy="135" r="15" fill="none" stroke="#ff0080" stroke-width="2" stroke-dasharray="4 2">
-                                     <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="8s" repeatCount="indefinite" />
-                                </circle>
-                            </svg>
+                            <video class="project-video" autoplay muted loop playsinline 
+                                   data-zoom="1.0" 
+                                   data-shift-x="0" 
+                                   data-shift-y="0">
+                                <source src="Splash/lesion master.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">Lesion Master - AI-Powered Medical Image Segmentation</h3>
@@ -811,27 +794,16 @@
                     
                     <div class="project-card">
                         <div class="project-animation-container">
-                            <svg viewBox="-10 -10 120 120" width="120" height="120">
-                                <defs>
-                                    <filter id="glow-3d">
-                                        <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
-                                        <feMerge>
-                                            <feMergeNode in="coloredBlur"/>
-                                            <feMergeNode in="SourceGraphic"/>
-                                        </feMerge>
-                                    </filter>
-                                </defs>
-                                <g id="cube" style="transform-style: preserve-3d; animation: rotate3D 10s linear infinite; filter: url(#glow-3d);">
-                                    <circle cx="50" cy="50" r="40" fill="none" stroke="#00d4ff" stroke-width="1" transform="rotate(90 50 50)"/>
-                                    <ellipse cx="50" cy="50" rx="40" ry="20" fill="none" stroke="#ff0080" stroke-width="1"/>
-                                </g>
-                            </svg>
-                            <style>
-                                @keyframes rotate3D { from { transform: rotateY(0deg) rotateX(10deg); } to { transform: rotateY(360deg) rotateX(10deg); } }
-                            </style>
+                            <video class="project-video" autoplay muted loop playsinline 
+                                   data-zoom="1.1" 
+                                   data-shift-x="20" 
+                                   data-shift-y="-50">
+                                <source src="Splash/brain_3d_2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                         <div class="project-content">
-                            <h3 class="project-title">Brain Tumor Visualisation in 3D</h3>
+                            <h3 class="project-title">A Three-Dimensional View of Brain Anatomy</h3>
                             <p class="project-description">
                                 <ul>
                                     <li>Developed a sophisticated MRI visualization and analysis tool leveraging supervoxel segmentation to precisely identify anatomical structures.</li>
@@ -850,15 +822,13 @@
 
                     <div class="project-card">
                         <div class="project-animation-container">
-                            <svg viewBox="0 0 300 150">
-                                <path d="M 20 120 L 280 120 M 20 120 L 20 20" stroke="rgba(255,255,255,0.3)" stroke-width="2" />
-                                <path d="M 30 100 Q 80 40, 130 80 T 230 60 L 270 90" stroke="#00d4ff" fill="none" stroke-width="3">
-                                    <animate attributeName="d" values="M 30 100 Q 80 80, 130 100 T 230 80 L 270 100; M 30 100 Q 80 40, 130 80 T 230 60 L 270 90; M 30 100 Q 80 80, 130 100 T 230 80 L 270 100" dur="4s" repeatCount="indefinite" />
-                                </path>
-                                <path d="M 30 90 L 80 70 L 130 90 L 180 60 L 230 80 L 270 50" stroke="#ff0080" fill="none" stroke-width="2" opacity="0.7">
-                                     <animate attributeName="d" values="M 30 90 L 80 90 L 130 90 L 180 90 L 230 90 L 270 90; M 30 90 L 80 70 L 130 90 L 180 60 L 230 80 L 270 50; M 30 90 L 80 90 L 130 90 L 180 90 L 230 90 L 270 90" dur="4s" repeatCount="indefinite" />
-                                </path>
-                            </svg>
+                            <video class="project-video" autoplay muted loop playsinline 
+                                   data-zoom="1.0" 
+                                   data-shift-x="0" 
+                                   data-shift-y="0">
+                                <source src="Splash/Time series Forecasting.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">Advanced Time-Series Forecasting for Market Volatility</h3>
@@ -880,31 +850,14 @@
                     </div>
 
                     <div class="project-card">
-                        <div class="project-animation-container" style="background-color: #333; padding: 20px; border-radius: 10px;">
-                            <svg viewBox="0 0 300 150" font-family="sans-serif">
-                                <text x="30" y="83" font-size="20" fill="#fff">📰</text>
-                                
-                                <path d="M 60 75 H 100" stroke="#fff" stroke-width="2" stroke-dasharray="5 3">
-                                    <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="1s" repeatCount="indefinite"/>
-                                </path>
-                                
-                                <rect x="100" y="50" width="100" height="50" rx="5" fill="rgba(255, 0, 128, 0.2)" stroke="#ff0080" stroke-width="2"/>
-                                <text x="150" y="80" text-anchor="middle" fill="#ff0080" font-weight="bold">FinBERT</text>
-                                
-                                <path d="M 200 75 H 240" stroke="#fff" stroke-width="2" stroke-dasharray="5 3">
-                                    <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="1s" repeatCount="indefinite"/>
-                                </path>
-                                
-                                <g>
-                                    <path d="M 250 65 L 260 55 L 270 65" fill="none" stroke="green" stroke-width="3">
-                                        <animate attributeName="opacity" values="1; 0; 1" keyTimes="0; 0.5; 1" dur="1.5s" repeatCount="indefinite" />
-                                    </path>
-                                    
-                                    <path d="M 250 85 L 260 95 L 270 85" fill="none" stroke="red" stroke-width="3">
-                                        <animate attributeName="opacity" values="0; 1; 0" keyTimes="0; 0.5; 1" dur="1.5s" repeatCount="indefinite" />
-                                    </path>
-                                </g>
-                            </svg>
+                        <div class="project-animation-container">
+                            <video class="project-video" autoplay muted loop playsinline 
+                                   data-zoom="1.1" 
+                                   data-shift-x="0" 
+                                   data-shift-y="0">
+                                <source src="Splash/finbert_2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">Quantitative Analysis of Market Sentiment using NLP</h3>
@@ -926,19 +879,13 @@
 
                     <div class="project-card">
                         <div class="project-animation-container">
-                            <div style="display: flex; justify-content: center; align-items: center; height: 100%; flex-direction: column;">
-                                <div style="position: relative; width: 200px; height: 100px;">
-                                    <svg width="200" height="100" style="position: absolute;">
-                                        <path d="M 10 80 Q 50 20 100 40 T 190 30" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.8">
-                                            <animate attributeName="stroke-dasharray" values="0,200;200,200;200,0" dur="3s" repeatCount="indefinite"/>
-                                        </path>
-                                        <path d="M 10 70 Q 60 30 120 50 T 190 40" stroke="#ff0080" stroke-width="2" fill="none" opacity="0.6">
-                                            <animate attributeName="stroke-dasharray" values="0,200;200,200;200,0" dur="3s" begin="0.5s" repeatCount="indefinite"/>
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div style="color: #00d4ff; font-size: 1.2rem; margin-top: 1rem; animation: fadeInOutFinance 2s ease-in-out infinite;">Black-Scholes Model</div>
-                            </div>
+                            <video class="project-video" autoplay muted loop playsinline 
+                                   data-zoom="1.0" 
+                                   data-shift-x="0" 
+                                   data-shift-y="0">
+                                <source src="Splash/black scholes.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">Financial Modeling: Black-Scholes Implementation</h3>
@@ -960,19 +907,13 @@
 
                     <div class="project-card">
                         <div class="project-animation-container">
-                            <div style="display: flex; justify-content: space-around; align-items: center; height: 100%; padding: 2rem; width: 100%;">
-                                <div style="text-align: center;">
-                                    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(45deg, #00d4ff, #ff0080); animation: sensorPulse 2s ease-in-out infinite; margin: 0 auto 1rem;"></div>
-                                    <div style="color: #00d4ff; font-size: 0.9rem;">AQI Sensor</div>
-                                </div>
-                                <div style="font-size: 2rem; color: #fff; animation: dataTransfer 2s ease-in-out infinite;">📡</div>
-                                <div style="text-align: center;">
-                                    <div style="width: 80px; height: 50px; background: linear-gradient(45deg, rgba(0, 212, 255, 0.3), rgba(255, 0, 128, 0.3)); border-radius: 10px; display: flex; align-items: center; justify-content: center; animation: cloudSync 3s ease-in-out infinite; margin: 0 auto 1rem;">
-                                        <span style="color: #fff; font-size: 0.8rem;">Cloud</span>
-                                    </div>
-                                    <div style="color: #ff0080; font-size: 0.9rem;">ThingSpeak</div>
-                                </div>
-                            </div>
+                            <video class="project-video" autoplay muted loop playsinline 
+                                   data-zoom="1.4" 
+                                   data-shift-x="10" 
+                                   data-shift-y="-10">
+                                <source src="Splash/Iot.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">Real-Time IoT Air Quality Monitor</h3>
@@ -994,26 +935,13 @@
 
                     <div class="project-card">
                         <div class="project-animation-container">
-                            <svg class="iot-sensing-svg" viewBox="0 0 400 250">
-                                <defs>
-                                    <radialGradient id="lightGradient">
-                                        <stop offset="0%" stop-color="rgba(255, 255, 200, 0.7)"/>
-                                        <stop offset="100%" stop-color="rgba(255, 255, 200, 0)"/>
-                                    </radialGradient>
-                                </defs>
-                                
-                                <g class="robot-group" transform="translate(80, 240)">
-                                    <rect class="robot-body" x="-11" y="+200" width="50" height="40" rx="5"/>
-                                    <circle class="robot-camera" cx="14" cy="190" r="10"/>
-                                    <polygon class="torch-light" points="14,190 250,-150 250,50" transform-origin="14 190"/>
-                                </g>
-
-                                <circle class="ball" cx="300" cy="150" r="30"/>
-
-                                <g>
-                                    <text class="detection-text" x="300" y="50" style="font-size: 15px;">Object Identified</text>
-                                </g>
-                            </svg>
+                            <video class="project-video" autoplay muted loop playsinline 
+                                   data-zoom="1.0" 
+                                   data-shift-x="0" 
+                                   data-shift-y="0">
+                                <source src="Splash/Object.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">Object Sensing and Identification using IoT</h3>
@@ -1330,6 +1258,41 @@
             });
         }
 
+        // Apply custom zoom and position to each video
+        function initVideoTransforms() {
+            document.querySelectorAll('.project-video').forEach(video => {
+                const zoom = video.getAttribute('data-zoom') || '1.0';
+                const shiftX = video.getAttribute('data-shift-x') || '0';
+                const shiftY = video.getAttribute('data-shift-y') || '0';
+                
+                video.style.transform = `scale(${zoom})`;
+                video.style.objectPosition = `${shiftX}px ${shiftY}px`;
+            });
+        }
+
+        // Video playback control - restart videos when scrolled into view
+        function initVideoPlayback() {
+            const videos = document.querySelectorAll('.project-video');
+            
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const video = entry.target;
+                    if (entry.isIntersecting) {
+                        // Restart video from beginning when it comes into view
+                        video.currentTime = 0;
+                        video.play();
+                    } else {
+                        // Optional: pause video when out of view to save resources
+                        video.pause();
+                    }
+                });
+            }, { threshold: 0.5 }); // Trigger when 50% of the video is visible
+            
+            videos.forEach(video => {
+                videoObserver.observe(video);
+            });
+        }
+
         // Initialize all features
         document.addEventListener('DOMContentLoaded', function() {
             initScrollAnimations();
@@ -1338,6 +1301,8 @@
             initSkillBars();
             initParallaxEffects();
             initProjectInteractions();
+            initVideoPlayback();
+            initVideoTransforms();
         });
 
         
